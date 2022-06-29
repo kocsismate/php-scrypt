@@ -119,8 +119,8 @@ PHP_FUNCTION(scrypt)
 	}
 
 	if (isPowerOfTwo(cryptN) != 0) {
-	  zend_argument_value_error(3, "must be a power of 2");
-	  RETURN_THROWS();
+		zend_argument_value_error(3, "must be a power of 2");
+		RETURN_THROWS();
 	}
 
 	cryptR = clampAndCast32(4, phpR, 0);

@@ -34,17 +34,17 @@
  */
 uint64_t clampAndCast64(int32_t arg_num, zend_long value, zend_long min)
 {
-    if (value <= min) {
-        zend_argument_value_error(arg_num, "must be greater than %d", min);
-        return 0;
+	if (value <= min) {
+		zend_argument_value_error(arg_num, "must be greater than %d", min);
+		return 0;
     }
 
     if (value > UINT64_MAX) {
-    	zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
-        return 0;
-    }
+		zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
+		return 0;
+	}
 
-    return (uint64_t) value;
+	return (uint64_t) value;
 }
 
 /*
@@ -55,14 +55,14 @@ uint64_t clampAndCast64(int32_t arg_num, zend_long value, zend_long min)
 uint32_t clampAndCast32(int32_t arg_num, zend_long value, zend_long min)
 {
 	if (value <= min) {
-        zend_argument_value_error(arg_num, "must be greater than %d", min);
-        return 0;
-    }
+		zend_argument_value_error(arg_num, "must be greater than %d", min);
+		return 0;
+	}
 
-    if (value > UINT32_MAX) {
-    	zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
-        return 0;
-    }
+	if (value > UINT32_MAX) {
+		zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
+		return 0;
+	}
 
     return (uint32_t) value;
 }
@@ -72,5 +72,5 @@ uint32_t clampAndCast32(int32_t arg_num, zend_long value, zend_long min)
  */
 uint64_t isPowerOfTwo(uint64_t N)
 {
-  return N & (N - 1);
+	return N & (N - 1);
 }
