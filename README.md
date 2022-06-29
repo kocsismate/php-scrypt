@@ -43,7 +43,7 @@ Unix/OSX
 --------
 
 1. `phpize`
-2. If on OSX; `export CFLAGS='-arch i386 -arch x86_64'`
+2. If on OSX; `export CFLAGS='-arch x86_64'`
 3. `./configure --enable-scrypt`
 4. `make`
 5. `make install`

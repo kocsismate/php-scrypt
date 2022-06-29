@@ -44,27 +44,20 @@
 /*
  * Casts a long into a uint64_t.
  *
- * Throws a php error if the value is out of bounds
- * and will return 0. The error varaible will be set to 1, otherwise
- * left intact
+ * Throws a php error if the value is out of bounds and will return 0.
  */
-uint64_t
-clampAndCast64(const char *variableName, long value, int *error, long min);
+uint64_t clampAndCast64(int32_t arg_num, zend_long value, zend_long min);
 
 /*
  * Casts a long into a uint32_t.
  *
- * Throws a php error if the value is out of bounds
- * and will return 0. The error varaible will be set to 1, otherwise
- * left intact
+ * Throws an exception if the value is out of bounds and will return 0.
  */
-uint32_t
-clampAndCast32(const char *variableName, long value, int *error, long min);
+uint32_t clampAndCast32(int32_t arg_num, zend_long value, zend_long min);
 
 /*
  * Checks if the givn number is a power of two
  */
-uint64_t
-isPowerOfTwo (uint64_t N);
+uint64_t isPowerOfTwo(uint64_t N);
 
 #endif

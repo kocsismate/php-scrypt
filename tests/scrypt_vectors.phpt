@@ -1,5 +1,5 @@
 --TEST--
-Test scrypt KDF using test vectors.
+Test scrypt() KDF using test vectors.
 --SKIPIF--
 <?php if (!extension_loaded("scrypt")) print "skip"; ?>
 --INI--

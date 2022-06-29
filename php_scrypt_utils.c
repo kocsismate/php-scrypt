@@ -30,58 +30,47 @@
 /*
  * Casts a long into a uint64_t.
  *
- * Throws a php error if the value is out of bounds
- * and will return 0. The error varaible will be set to 1, otherwise
- * left intact
+ * Throws a php error if the value is out of bounds and will return 0.
  */
-uint64_t
-clampAndCast64(const char *variableName, long value, int *error, long min)
+uint64_t clampAndCast64(int32_t arg_num, zend_long value, zend_long min)
 {
-    TSRMLS_FETCH();
-    if (value <= min)
-    {
-        php_error_docref(NULL TSRMLS_CC, E_ERROR, "%s is too low.", variableName);
-        *error = 1;
-        return 0;
-    } else if (value > UINT64_MAX) {
-        php_error_docref(NULL TSRMLS_CC, E_ERROR, "%s is too high.", variableName);
-        *error = 1;
+    if (value <= min) {
+        zend_argument_value_error(arg_num, "must be greater than %d", min);
         return 0;
     }
 
-    return (uint64_t)value;
+    if (value > UINT64_MAX) {
+    	zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
+        return 0;
+    }
+
+    return (uint64_t) value;
 }
 
 /*
  * Casts a long into a uint32_t.
  *
- * Throws a php error if the value is out of bounds
- * and will return 0. The error varaible will be set to 1, otherwise
- * left intact
+ * Throws an exception if the value is out of bounds and will return 0.
  */
-uint32_t
-clampAndCast32(const char *variableName, long value, int *error, long min)
+uint32_t clampAndCast32(int32_t arg_num, zend_long value, zend_long min)
 {
-    TSRMLS_FETCH();
-    if (value <= min)
-    {
-        php_error_docref(NULL TSRMLS_CC, E_ERROR, "%s is too low.", variableName);
-        *error = 1;
-        return -1;
-    } else if (value > UINT32_MAX) {
-        php_error_docref(NULL TSRMLS_CC, E_ERROR, "%s is too high.", variableName);
-        *error = 1;
-        return -1;
+	if (value <= min) {
+        zend_argument_value_error(arg_num, "must be greater than %d", min);
+        return 0;
     }
 
-    return (uint32_t)value;
+    if (value > UINT32_MAX) {
+    	zend_argument_value_error(arg_num, "must be less than or equal to %d", min);
+        return 0;
+    }
+
+    return (uint32_t) value;
 }
 
 /*
- * Checks if the givn number is a power of two
+ * Checks if the given number is a power of two
  */
-uint64_t
-isPowerOfTwo(uint64_t N)
+uint64_t isPowerOfTwo(uint64_t N)
 {
   return N & (N - 1);
 }
