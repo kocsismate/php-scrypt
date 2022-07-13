@@ -187,7 +187,7 @@ PHP_FUNCTION(scrypt_pickparams)
 	zend_long maxmem;
 	double memfrac, maxtime;
 
-	zend_long cryptN;
+	int cryptN;
 	uint32_t cryptR, cryptP;
 
 	int rc;
