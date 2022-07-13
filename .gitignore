@@ -7,6 +7,7 @@ scrypt-*.tgz
 # phpize & make related files
 #
 
+*.dep
 .deps
 *.lo
 *.la
